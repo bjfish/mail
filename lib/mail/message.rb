@@ -379,8 +379,9 @@ module Mail
         self.encoded == other.encoded
       else
         puts "4"
-        dup.tap { |m| m.message_id = '<temp@test>' }.encoded ==
-          other.dup.tap { |m| m.message_id = '<temp@test>' }.encoded
+        e1 = dup.tap { |m| m.message_id = '<temp@test>' }.encoded
+        e2 = other.dup.tap { |m| m.message_id = '<temp@test>' }.encoded
+        e1 == e2
       end
     end
 
