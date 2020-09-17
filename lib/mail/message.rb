@@ -1808,7 +1808,7 @@ module Mail
       buffer = header.encoded
       buffer << "\r\n"
       buffer << body.encoded(content_transfer_encoding)
-      puts "buffer: #{buffer.inspect}"
+      puts "buffer: #{buffer.inspect}" if $BUF_INSPECT
       buffer
     end
 

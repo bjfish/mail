@@ -67,7 +67,13 @@ describe "Test Retriever" do
       puts "===in spec ==="
       expect(Mail.find(:count => 1, :what => :last, :order => :asc)).to eq @emails.last
       puts "===in spec 2 ==="
-      expect(Mail.find(:count => 1, :what => :first, :order => :desc)).to eq @emails.first
+      $BUF_INSPECT = true
+      begin
+        expect(Mail.find(:count => 1, :what => :first, :order => :desc)).to eq @emails.first
+      ensure
+        $BUF_INSPECT = false
+      end
+
     end
 
     it "should handle the :delete_after_find option" do
