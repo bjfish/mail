@@ -379,9 +379,8 @@ module Mail
         self.encoded == other.encoded
       else
         puts "4"
-        e1 = dup.tap { |m| m.message_id = '<temp@test>' }.encoded
-        e2 = other.dup.tap { |m| m.message_id = '<temp@test>' }.encoded
-        e1 == e2
+        dup.tap { |m| m.message_id = '<temp@test>' }.encoded ==
+          other.dup.tap { |m| m.message_id = '<temp@test>' }.encoded
       end
     end
 
@@ -1809,6 +1808,7 @@ module Mail
       buffer = header.encoded
       buffer << "\r\n"
       buffer << body.encoded(content_transfer_encoding)
+      puts "buffer: #{buffer.inspect}"
       buffer
     end
 
