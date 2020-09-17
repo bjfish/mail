@@ -371,11 +371,14 @@ module Mail
     #  m2 = Mail.new("Message-ID: <DIFFERENT@test>\r\nSubject: Hello\r\n\r\nHello")
     #  m1 == m2 #=> false
     def ==(other)
+      puts "1"
       return false unless other.respond_to?(:encoded)
-
+      puts "2"
       if self.message_id && other.message_id
+        puts "3"
         self.encoded == other.encoded
       else
+        puts "4"
         dup.tap { |m| m.message_id = '<temp@test>' }.encoded ==
           other.dup.tap { |m| m.message_id = '<temp@test>' }.encoded
       end

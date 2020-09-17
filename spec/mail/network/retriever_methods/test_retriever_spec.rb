@@ -65,10 +65,7 @@ describe "Test Retriever" do
 
     it "should handle the both of :what and :order option with :count => 1" do
       expect(Mail.find(:count => 1, :what => :last, :order => :asc)).to eq @emails.last
-      f = Mail.find(:count => 1, :what => :first, :order => :desc)
-      e = @emails.first
-      puts "f #{f.object_id}, e #{e.object_id}"
-      expect(f).to eq e
+      expect(Mail.find(:count => 1, :what => :first, :order => :desc)).to eq @emails.first
     end
 
     it "should handle the :delete_after_find option" do
