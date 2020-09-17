@@ -64,10 +64,11 @@ describe "Test Retriever" do
     end
 
     it "should handle the both of :what and :order option with :count => 1" do
+      $BUF_INSPECT = true
       puts "===in spec ==="
       expect(Mail.find(:count => 1, :what => :last, :order => :asc)).to eq @emails.last
       puts "===in spec 2 ==="
-      $BUF_INSPECT = true
+
       begin
         expect(Mail.find(:count => 1, :what => :first, :order => :desc)).to eq @emails.first
       ensure
