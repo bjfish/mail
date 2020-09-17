@@ -19,6 +19,7 @@ rvm:
   - rbx-2
   - rbx-3
   - truffleruby
+  - truffleruby-head
 
 env:
   global:
